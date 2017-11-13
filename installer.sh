@@ -5,7 +5,6 @@ CONFIG="/boot/config.txt"
 RCLOCAL="/etc/rc.local"
 sudo apt-get update
 sudo apt-get -y install $APPLIST
-#sudo apt-get -y dist-upgrade
 raspi-config nonint do_ssh 1
 raspi-config nonint do_vnc 0
 if grep -Fq "macchanger" $RCLOCAL
