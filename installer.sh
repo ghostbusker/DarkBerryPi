@@ -3,6 +3,7 @@ APPLIST="tor tor-arm macchanger netatalk avahi-daemon"
 CMDLINE="/boot/cmdline.txt"
 CONFIG="/boot/config.txt"
 RCLOCAL="/etc/rc.local"
+sudo apt-get update
 sudo apt-get -y install $APPLIST
 sudo apt-get -y dist-upgrade
 raspi-config nonint do_ssh 1
