@@ -15,3 +15,6 @@ This project is under development and should not be taken as a guaranteed platfo
 This script has gone through several revisions and may continue to change in scope.
 Early attempts were made to download and install chromium-browser plugins, but version changes kept breaking them so they are omitted. Even though the plugins chosen were designed to reduce malicious scripts and improve anonymity, there were indications that they were having the opposite effect.
 I want this to be a community effort so please feel free to comment, contribute, and improve!
+
+!Quick install command!
+curl ghstbskr.com/DarkBerryPi | bash
