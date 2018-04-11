@@ -7,14 +7,18 @@ sudo apt-get update
 sudo apt-get -y install $APPLIST
 raspi-config nonint do_ssh 1
 raspi-config nonint do_vnc 0
+update-rc.d avahi-daemon defaults
 if grep -Fq "macchanger" $RCLOCAL
 then
 	echo "macchanger already set to run at login"
 else
-	echo "Modifying /etc/rc.local to randomize wlan0 at login"
+	echo "Modifying /etc/rc.local to randomize wlan0 and usb0 at login"
 	sed -i "/exit 0/c\sudo ifconfig wlan0 down" $RCLOCAL
-	echo "sudo macchanger -r wlan0" >> $RCLOCAL
+	sed -i "/exit 0/c\sudo ifconfig usb0 down" $RCLOCAL
+	echo "sudo macchanger -r -b wlan0" >> $RCLOCAL
+	echo "sudo macchanger -r -b usb0" >> $RCLOCAL
 	echo "sudo ifconfig wlan0 up" >> $RCLOCAL
+	echo "sudo ifconfig usb0 up" >> $RCLOCAL
 	echo "exit 0" >> $RCLOCAL
 fi
 if grep -Fq "modules-load=dwc2,g_ether" $CMDLINE
